@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login - Cyber Security</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+  <div class="auth-page">
+    <div class="auth-card">
+      <div class="auth-left">
+        <img src="{{ url_for('static', filename='logo.png') }}" class="auth-logo" alt="logo">
+        <h2>Welcome to CyberSecurity</h2>
+        <p class="muted">Securely upload firewall logs after signing in to analyze threats and anomalies.</p>
+      </div>
+
+      <div class="auth-right" id="container">
+        <!-- Sign In -->
+        <div class="form-panel sign-in">
+          <h3>Sign in</h3>
+          {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              <div class="flash-wrap">
+                {% for cat, msg in messages %}
+                  <div class="flash-message {{ cat }}">{{ msg }}</div>
+                {% endfor %}
+              </div>
+            {% endif %}
+          {% endwith %}
+          <form action="{{ url_for('login') }}" method="POST">
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit" class="btn">Login</button>
+            <div class="helper">
+              <span>Don't have an account?</span>
+              <button type="button" id="show-register" class="link-btn">Create one</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Sign Up -->
+        <div class="form-panel sign-up">
+          <h3>Create account</h3>
+          <form action="{{ url_for('register') }}" method="POST">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit" class="btn alt">Sign up</button>
+            <div class="helper">
+              <span>Already have an account?</span>
+              <button type="button" id="show-login" class="link-btn">Sign in</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  <script>
+    // toggle logic fallback (makes sign-up/ sign-in switch)
+    document.addEventListener('DOMContentLoaded', () => {
+      const container = document.getElementById('container');
+      const showRegister = document.getElementById('show-register');
+      const showLogin = document.getElementById('show-login');
+      if (showRegister) showRegister.addEventListener('click', () => container.classList.add('active'));
+      if (showLogin) showLogin.addEventListener('click', () => container.classList.remove('active'));
+    });
+  </script>
+</body>
+</html>

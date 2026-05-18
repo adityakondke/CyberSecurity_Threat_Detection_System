@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analysis Results</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <div class="container">
+    <header class="results-header">
+      <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo">
+      <h1>Analysis Results</h1>
+      <a href="{{ url_for('index') }}" class="back">← Back to Upload</a>
+    </header>
+
+    {% if not from_db %}
+    <div class="summary">
+      <strong>File:</strong> {{ filename }} <br>
+      <strong>Total Lines:</strong> {{ total }} &nbsp; | &nbsp;
+      <strong>Anomalies Detected:</strong> {{ anomaly_count }}
+    </div>
+
+    <table class="results-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Log Line</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in results %}
+        <tr>
+          <td>{{ loop.index }}</td>
+          <td><pre class="raw">{{ row['raw'] }}</pre></td>
+          <td class="{{ 'anom' if row['is_anomaly']==1 else 'normal' }}">
+            {{ 'Suspicious' if row['is_anomaly']==1 else 'Normal' }}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    {% else %}
+    <div class="summary">
+      <strong>Showing recent logs from database</strong>
+    </div>
+
+    <table class="results-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Timestamp</th>
+          <th>Src → Dst</th>
+          <th>Proto</th>
+          <th>Action</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for r in db_rows %}
+        <tr>
+          <td>{{ r.id }}</td>
+          <td>{{ r.timestamp }}</td>
+          <td>{{ r.src_ip }}:{{ r.src_port }} → {{ r.dst_ip }}:{{ r.dst_port }}</td>
+          <td>{{ r.protocol }}</td>
+          <td>{{ r.action }}</td>
+          <td class="{{ 'anom' if r.is_anomaly==1 else 'normal' }}">
+            {{ 'Suspicious' if r.is_anomaly==1 else 'Normal' }}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% endif %}
+
+  </div>
+
+</body>
+</html>

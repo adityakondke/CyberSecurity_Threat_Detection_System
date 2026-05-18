@@ -1,0 +1,12 @@
+timestamp,src_ip,dst_ip,protocol,src_port,dst_port,action,raw,hour,is_anomaly
+,,,,,,2025-10-20,"2025-10-20 09:00:01 src_ip=192.168.1.10 dst_ip=10.0.0.5 src_port=5000 dst_port=80 protocol=TCP action=ALLOW raw=""Normal web traffic""",,0
+,,,,,,2025-10-20,"2025-10-20 09:01:15 src_ip=203.0.113.25 dst_ip=10.0.0.5 src_port=12345 dst_port=80 protocol=TCP action=ALLOW raw=""Unusual external IP""   # unusual IP",,0
+,,,,,,2025-10-20,"2025-10-20 09:02:30 src_ip=192.168.1.12 dst_ip=10.0.0.6 src_port=5001 dst_port=22 protocol=TCP action=ALLOW raw=""Connection to restricted port""  # restricted port",,0
+,,,,,,2025-10-20,"2025-10-20 09:03:45 src_ip=192.168.1.13 dst_ip=10.0.0.7 src_port=5002 dst_port=80 protocol=TCP action=DROP raw=""Packet drop detected""   # packet drop",,0
+,,,,,,2025-10-20,"2025-10-20 09:04:50 src_ip=203.0.113.26 dst_ip=10.0.0.8 src_port=12346 dst_port=443 protocol=TCP action=DENY raw=""Failed connection attempt""   # failed connection",,0
+,,,,,,2025-10-20,"2025-10-20 09:05:55 src_ip=198.51.100.50 dst_ip=10.0.0.9 src_port=12347 dst_port=3389 protocol=TCP action=REJECT raw=""Full anomaly detected""   # full anomaly",,0
+,,,,,,2025-10-20,"2025-10-20 09:06:10 src_ip=203.0.113.25 dst_ip=10.0.0.10 src_port=12348 dst_port=80 protocol=TCP action=ALLOW raw=""High traffic volume test 1""",,0
+,,,,,,2025-10-20,"2025-10-20 09:06:20 src_ip=203.0.113.25 dst_ip=10.0.0.11 src_port=12349 dst_port=80 protocol=TCP action=ALLOW raw=""High traffic volume test 2""",,0
+,,,,,,2025-10-20,"2025-10-20 09:06:30 src_ip=203.0.113.25 dst_ip=10.0.0.12 src_port=12350 dst_port=80 protocol=TCP action=ALLOW raw=""High traffic volume test 3""",,0
+,,,,,,2025-10-20,"2025-10-20 09:06:40 src_ip=203.0.113.25 dst_ip=10.0.0.13 src_port=12351 dst_port=80 protocol=TCP action=ALLOW raw=""High traffic volume test 4""",,0
+,,,,,,2025-10-20,"2025-10-20 09:06:50 src_ip=203.0.113.25 dst_ip=10.0.0.14 src_port=12352 dst_port=80 protocol=TCP action=ALLOW raw=""High traffic volume test 5""",,0

@@ -1,0 +1,503 @@
+/* ---------- base ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+:root{
+  --accent:#512da8;
+  --accent-2:#5c6bc0;
+  --glass: rgba(255,255,255,0.06);
+  --muted:#f8fafc;
+  --card:#fef9f9;
+  --bg-img: url('../cyber-bg.jpg');
+}
+
+*{box-sizing:border-box;font-family:'Montserrat',sans-serif}
+body{
+  margin:0; min-height:100vh;
+  background: linear-gradient(0deg, rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("../cyber-bg.jpg") center/cover no-repeat;
+  color:#fff;
+}
+
+/* ---------- Header / Hero ---------- */
+.hero-container{
+  display:flex; align-items:center; justify-content:center;
+  padding:80px 20px 40px;
+  text-align:center;
+}
+.hero-inner{max-width:900px}
+.site-logo{width:84px;height:84px;object-fit:contain;border-radius:12px;background:rgba(255,255,255,0.06);padding:10px;margin-bottom:14px}
+.hero-title{font-size:36px;margin:6px 0 8px;font-weight:700}
+.project-desc{color:#fff;font-size:16px;margin-bottom:18px;max-width:760px;margin-left:auto;margin-right:auto}
+.get-started-btn{display:inline-block;background:var(--accent);padding:12px 26px;border-radius:12px;color:#fff;text-decoration:none;font-weight:700;transition:all .18s}
+.get-started-btn:hover{transform:translateY(-4px);background:var(--accent-2)}
+
+/* ---------- main content / cards ---------- */
+.upload-section{background:rgba(229, 10, 10, 0.06);padding:22px;border-radius:14px;backdrop-filter: none;}
+.grid-detect{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:12px}
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));padding:18px;border-radius:12px;color:#fbf9f9;box-shadow:0 6px 18px rgba(0,0,0,0.5)}
+.card h3{margin-bottom:8px;color:rgb(225, 49, 49)} /* Change title to white */
+.card .muted{color:#d2de2e;font-size:14px} /* Change muted text to light gray */
+
+/* responsive */
+@media (max-width:900px){ .grid-detect{grid-template-columns:repeat(2,1fr)} .hero-title{font-size:30px} }
+@media (max-width:600px){ .grid-detect{grid-template-columns:1fr} .hero-container{padding:40px 12px} }
+
+/* ---------- auth page ---------- */
+.auth-page{display:flex;align-items:center;justify-content:center;height:calc(100vh - 40px);padding:20px}
+.auth-card{display:flex;width:960px;max-width:100%;border-radius:18px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.6);background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02))}
+.auth-left{flex:1;padding:40px;background:linear-gradient(180deg, rgba(81,45,168,0.9), rgba(92,107,192,0.85));color:#fff;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:12px}
+.auth-left h2{font-size:22px;margin:6px 0}
+.auth-left p{color:rgba(255,255,255,0.9);max-width:320px}
+.auth-right{flex:1.2;padding:28px;display:flex;align-items:center;justify-content:center;position:relative}
+.auth-logo{width:64px;height:64px;border-radius:10px;background:#fff;padding:8px;object-fit:contain}
+.form-panel{width:100%;max-width:360px;transition:all .4s ease}
+.form-panel input{width:100%;padding:12px;margin:10px 0;border-radius:8px;border:1px solid rgba(0,0,0,0.1);outline:none}
+.btn{background:var(--accent);color:#fff;padding:12px 18px;border-radius:8px;border:none;cursor:pointer;font-weight:700}
+.btn.alt{background:transparent;border:2px solid rgba(81,45,168,0.9);color:#fff}
+.helper{margin-top:12px;color:var(--muted);display:flex;align-items:center;gap:10px}
+.link-btn{background:none;border:none;color:#fff;text-decoration:underline;cursor:pointer;padding:6px}
+
+/* switch sign-in / sign-up */
+#container.active .sign-in{display:none}
+#container.active .sign-up{display:block}
+#container .sign-up{display:none}
+
+/* flash */
+.flash-wrap{margin-bottom:10px}
+.flash-message{padding:8px 12px;border-radius:8px;margin-bottom:8px}
+.flash-message.success{background:rgba(34,197,94,0.12);color:#bbf7d0}
+.flash-message.error{background:rgba(239,68,68,0.12);color:#fecaca}
+
+/* ---------- App shell + sidebar ---------- */
+.app-shell{display:flex;min-height:100vh}
+.sidebar{width:260px;background:rgba(0,0,0,0.6);padding:18px 12px;display:flex;flex-direction:column;gap:12px;position:relative;transition:all .25s}
+.side-top{display:flex;align-items:center;gap:12px}
+.side-logo{width:46px;height:46px;border-radius:8px;background:#fff;padding:6px}
+.brand{font-weight:700;font-size:18px}
+.side-menu{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+.menu-item{padding:10px 12px;color:var(--muted);text-decoration:none;border-radius:8px;display:block}
+.menu-item:hover{background:rgba(255,255,255,0.03);color:#fff}
+.collapse-btn{position:absolute;right:-18px;top:50%;transform:translateY(-50%);background:var(--accent);border:none;color:#fff;padding:8px;border-radius:8px;cursor:pointer}
+
+/* collapsed state */
+.sidebar.collapsed{width:72px}
+.sidebar.collapsed .brand{display:none}
+.sidebar.collapsed .menu-item{font-size:12px;text-align:center;padding-left:6px;padding-right:6px}
+
+/* content */
+.content{flex:1;padding:20px 28px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01))}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
+.view-area{display:grid;grid-template-columns:1fr;gap:16px}
+.view-card{background:rgba(255,255,255,0.03);padding:18px;border-radius:12px;color:#fff}
+.view-card.hidden{display:none}
+
+/* mobile */
+@media (max-width:800px){
+  .app-shell{flex-direction:column}
+  .sidebar{display:none}
+  .sidebar.mobile-show{display:flex}
+  .mobile-toggle{display:inline-block}
+}
+
+/* Style for the "What You Can Detect" section only */
+.main-content .upload-section {
+    padding: 22px; /* Restore the original padding/style from line 118 */
+    border-radius: 14px;
+    background: transparent; /* Ensure no background color */
+    backdrop-filter: none !important;
+    box-shadow: none; /* Remove any lingering shadows */
+}
+
+.upload-section h2 {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.upload-section form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.upload-section input[type="file"] {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: 60%;
+}
+
+.upload-btn {
+  background: linear-gradient(135deg, #4a00e0, #8e2de2);
+  color: white;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.upload-btn:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #8e2de2, #4a00e0);
+}
+
+/* ====================== */
+/* Modern Upload Section  */
+/* ====================== */
+.upload-card {
+  background: #1f1f3d;
+  color: white;
+  border-radius: 20px;
+  text-align: center;
+  padding: 40px 30px;
+  width: 90%;
+  margin: 20px auto;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  transition: all 0.3s ease-in-out;
+}
+
+.upload-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+}
+
+.upload-card h2 {
+  font-size: 26px;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.upload-card p {
+  font-size: 15px;
+  color: #cfd2ff;
+  margin-bottom: 25px;
+}
+
+.upload-icon {
+  font-size: 50px;
+  color: #8e2de2;
+  background: rgba(142, 45, 226, 0.15);
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  margin: 0 auto 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.file-input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.file-input-container input[type="file"] {
+  display: none;
+}
+
+.file-label {
+  background: linear-gradient(135deg, #4a00e0, #8e2de2);
+  color: white;
+  padding: 12px 25px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.file-label:hover {
+  background: linear-gradient(135deg, #8e2de2, #4a00e0);
+  transform: scale(1.05);
+}
+
+#file-name {
+  color: #aaa;
+  font-size: 14px;
+}
+
+.upload-btn {
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  border: none;
+  color: white;
+  padding: 12px 40px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.upload-btn:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #0072ff, #00c6ff);
+}
+
+.upload-btn i {
+  margin-right: 8px;
+}
+
+/* ====================== */
+/* Detection Results Table */
+/* ====================== */
+.results-table {
+  margin-top: 40px;
+  background: #2b2b4b;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.results-table h2 {
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.results-table table {
+  width: 100%;
+  border-collapse: collapse;
+  color: white;
+}
+
+.results-table th, .results-table td {
+  padding: 10px 15px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.results-table tr:hover {
+  background: rgba(255,255,255,0.05);
+}
+
+.status-badge {
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.status-badge.normal {
+  background: rgba(15, 157, 88, 0.15);
+  color: #0f9d58;
+}
+
+.status-badge.anomaly {
+  background: rgba(225, 29, 72, 0.15);
+  color: #e11d48;
+}
+
+.results-hint {
+  text-align: center;
+  color: #cfd2ff;
+  margin-top: 30px;
+}
+
+/* ---------------------------- */
+/* Modern Upload Section Styling */
+/* ---------------------------- */
+/* Corrected rule for the "What You Can Detect" container */
+.upload-section{
+  background: transparent; /* Changed to transparent to remove the background */
+  padding:22px;
+  border-radius:14px;
+  box-shadow: none; /* Ensure no shadow is applied */
+  
+}
+
+.upload-section:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.2);
+}
+
+.upload-section h2 {
+  font-size: 26px;
+  color: #333;
+  margin-bottom: 10px;
+  font-weight: 700;
+  text-align: center;
+}
+
+
+.upload-section p {
+  color: #666;
+  font-size: 15px;
+  margin-bottom: 30px;
+}
+
+/* File input container */
+.file-input-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.file-label {
+  background: linear-gradient(135deg, #512da8, #673ab7);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+.file-label:hover {
+  background: linear-gradient(135deg, #5c6bc0, #512da8);
+  transform: scale(1.05);
+}
+
+#file-name {
+  font-size: 14px;
+  color: #555;
+}
+
+/* Hide default file input */
+#logfile {
+  display: none;
+}
+
+/* Upload Button */
+.upload-btn {
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 14px 34px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 14px rgba(37, 117, 252, 0.3);
+}
+
+.upload-btn:hover {
+  background: linear-gradient(135deg, #2575fc, #6a11cb);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 117, 252, 0.45);
+}
+
+/* Upload Icon */
+.upload-icon {
+  font-size: 50px;
+  color: #6a11cb;
+  margin-bottom: 15px;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* ====================================== */
+/* 🔥 Modern, Professional Results Table  */
+/* ====================================== */
+.results {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 25px 30px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  margin-top: 30px;
+  overflow-x: auto;
+}
+
+.results h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 18px;
+}
+
+/* Table base styles */
+.results table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #222;
+  font-size: 15px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Table Header */
+.results table th {
+  background-color: #512da8;
+  color: #fff;
+  font-weight: 600;
+  text-align: left;
+  padding: 12px 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Table Rows */
+.results table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #eee;
+  color: #333;
+}
+
+/* Striped rows for better readability */
+.results table tr:nth-child(even) {
+  background-color: #f8f7ff;
+}
+
+/* Row hover effect */
+.results table tr:hover {
+  background-color: #ede7f6;
+  transition: background 0.3s ease;
+}
+
+/* Status styling */
+.results table td.normal {
+  color: #0f9d58; /* green */
+  font-weight: 600;
+}
+
+.results table td.anom {
+  color: #e11d48; /* red */
+  font-weight: 600;
+}
+
+/* Status badge style (optional alternative look) */
+.status-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.status-badge.normal {
+  background: rgba(15, 157, 88, 0.15);
+  color: #0f9d58;
+}
+
+.status-badge.anomaly {
+  background: rgba(225, 29, 72, 0.15);
+  color: #e11d48;
+}
+
+/* Make raw text look clean */
+.results pre.raw {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  background: #f3f3f9;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  color: #222;
+  margin: 0;
+}

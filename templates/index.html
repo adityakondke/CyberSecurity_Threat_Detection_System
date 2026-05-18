@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cyber Security Threat Detection System</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+  <header class="hero-container">
+    <div class="hero-inner">
+      <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="site-logo">
+      <h1 class="hero-title">Cyber Security Threat Detection System</h1>
+      <p class="project-desc">Detect anomalies in firewall logs — failed connections, unusual IP activity, DDoS spikes, restricted-port access and packet drops — using lightweight machine learning. Secure, simple & easy to use.</p>
+      <a class="get-started-btn" href="{{ url_for('login') }}">Get Started</a>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <section class="upload-section">
+      <h2 style="color:#fdfefc;font-size:20px;margin-bottom:12px">What You Can Detect (through Firewall Logs)</h2>
+      <div class="grid-detect">
+        <div class="card">
+          <h3>Multiple Failed Connections</h3>
+          <p class="muted">Repeated DENY entries or many connection attempts → brute-force / port-scan.</p>
+        </div>
+        <div class="card">
+          <h3>Unusual IP Activity</h3>
+          <p class="muted">Foreign or rarely-seen IPs initiating connections → suspicious source.</p>
+        </div>
+        <div class="card">
+          <h3>High Traffic Volume</h3>
+          <p class="muted">Large number of requests from single IP → possible DDoS or flood.</p>
+        </div>
+        <div class="card">
+          <h3>Access to Restricted Ports</h3>
+          <p class="muted">Attempts to reach admin/RDP ports (3389,22, etc.) → privilege probing.</p>
+        </div>
+        <div class="card">
+          <h3>Continuous Packet Drops</h3>
+          <p class="muted">Frequent DROP/REJECT/ICMP issues → network blocking or scanning.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div>© {{ now().year if now is defined else '2025' }} - CyberSec Mini Project • Built by Aditya Ko.</div>
+      <div class="footer-right">Contact: <a href="mailto:kondkeaditya6@gmail.com">kondkeaditya6@gmail.com</a></div>
+    </footer>
+  </main>
+
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
