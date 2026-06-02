@@ -38,13 +38,21 @@ DB_NAME = os.getenv("MYSQLDATABASE", "railway")
 DB_PORT = int(os.getenv("MYSQLPORT", "3306"))
 
 if DB_PASSWORD.strip() == "":
-    DB_URI = f"mysql+mysqlconnector://{DB_USER}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+    DB_URI = f"mysql+pymysql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
 else:
-    DB_URI = f"mysql+mysqlconnector://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+   DB_URI = f"mysql+pymysql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
 
 print("DB_URI =", DB_URI.replace(DB_PASSWORD, "***") if DB_PASSWORD else DB_URI)
 
-engine = create_engine(DB_URI, echo=False, future=True)
+engine = create_engine(
+    DB_URI,
+    echo=True,
+    pool_pre_ping=True,
+    pool_recycle=300,
+    connect_args={
+        "use_pure": True
+    }
+)
 metadata = MetaData()
 # -------------------------
 # Tables
@@ -499,7 +507,7 @@ def logout():
 print("DB_USER =", repr(DB_USER))
 print("DB_HOST =", repr(DB_HOST))
 print("DB_PORT =", repr(DB_PORT))  
-print(repr(DB_PASSWORD))
+print("DB_PASSWORD =", repr(DB_PASSWORD))
 
 
 # -------------------------
