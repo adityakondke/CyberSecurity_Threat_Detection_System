@@ -31,21 +31,20 @@ app.config['MAX_CONTENT_LENGTH'] = 16*1024*1024
 # -------------------------
 # DB
 # -------------------------
-# NOTE: Please ensure your MySQL server is running and database 'mini_project_db' exists.
-DB_USER = os.getenv("DB_USER","root")
-DB_PASSWORD = os.getenv("DB_PASSWORD","")
-DB_HOST = os.getenv("DB_HOST","https://cybersecurity-threat-detection-system-fezt.onrender.com")
-DB_NAME = os.getenv("DB_NAME","mini_project_db")
-DB_PORT = int(os.getenv("MYSQLPORT") or 3306)
+DB_USER = os.getenv("MYSQLUSER", "root")
+DB_PASSWORD = os.getenv("MYSQLPASSWORD", "")
+DB_HOST = os.getenv("MYSQLHOST", "localhost")
+DB_NAME = os.getenv("MYSQLDATABASE", "railway")
+DB_PORT = int(os.getenv("MYSQLPORT", "3306"))
 
-if DB_PASSWORD.strip()=="":
-    DB_URI = f"mysql+mysqlconnector://{DB_USER}@{DB_HOST}/{DB_NAME}"
+if DB_PASSWORD.strip() == "":
+    DB_URI = f"mysql+mysqlconnector://{DB_USER}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
 else:
-    DB_URI = f"mysql+mysqlconnector://{DB_USER}:{DB_PASSWORD}@{DB_HOST}/{DB_NAME}"
+    DB_URI = f"mysql+mysqlconnector://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+
+print("DB_URI =", DB_URI.replace(DB_PASSWORD, "***") if DB_PASSWORD else DB_URI)
 
 engine = create_engine(DB_URI, echo=False, future=True)
-metadata = MetaData()
-
 # -------------------------
 # Tables
 # -------------------------
