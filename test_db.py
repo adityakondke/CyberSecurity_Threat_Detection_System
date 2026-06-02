@@ -7,11 +7,17 @@ from werkzeug.security import generate_password_hash
 # ----------------------
 DB_USER = "root"
 DB_PASS = ""  # your MySQL root password if any
-DB_HOST = "https://cybersecurity-threat-detection-system-fezt.onrender.com"
+DB_HOST = "http://127.0.0.1:5000/"
 DB_NAME = "mini_project_db"
 
-DB_URI = f"mysql+mysqlconnector://{DB_USER}:{DB_PASS}@{DB_HOST}/{DB_NAME}"
-engine = create_engine(DB_URI, echo=True, future=True)
+DB_URI = f"mysql+pymysql://{DB_USER}:{DB_PASS}@{DB_HOST}/{DB_NAME}"
+
+engine = create_engine(
+    DB_URI,
+    pool_pre_ping=True,
+    pool_recycle=300
+)
+
 metadata = MetaData()
 
 # ----------------------
