@@ -496,6 +496,11 @@ def logout():
     flash("Logout Successful!","success") 
     return redirect(url_for("login"))
 
+print("DB_USER =", repr(DB_USER))
+print("DB_HOST =", repr(DB_HOST))
+print("DB_PORT =", repr(DB_PORT))  
+
+
 # -------------------------
 # Run App
 # -------------------------
