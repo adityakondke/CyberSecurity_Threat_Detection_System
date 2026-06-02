@@ -45,6 +45,7 @@ else:
 print("DB_URI =", DB_URI.replace(DB_PASSWORD, "***") if DB_PASSWORD else DB_URI)
 
 engine = create_engine(DB_URI, echo=False, future=True)
+metadata = MetaData()
 # -------------------------
 # Tables
 # -------------------------
