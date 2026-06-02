@@ -31,15 +31,13 @@ app.config['MAX_CONTENT_LENGTH'] = 16*1024*1024
 # -------------------------
 # DB
 # -------------------------
-DB_USER = os.getenv("MYSQLUSER", "root")
-DB_PASSWORD = os.getenv("MYSQLPASSWORD", "")
-DB_HOST = os.getenv("MYSQLHOST", "metro.proxy.rlwy.net")
-DB_NAME = os.getenv("MYSQLDATABASE", "railway")
-DB_PORT = int(os.getenv("MYSQLPORT", "52443"))
+DB_USER = os.getenv("MYSQLUSER")
+DB_PASSWORD = os.getenv("MYSQLPASSWORD")
+DB_HOST = os.getenv("MYSQLHOST")
+DB_PORT = os.getenv("MYSQLPORT")
+DB_NAME = os.getenv("MYSQLDATABASE")
 
 DB_URI = f"mysql+pymysql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
-
-print("DB_URI =", DB_URI.replace(DB_PASSWORD, "***"))
 
 engine = create_engine(
     DB_URI,
