@@ -7,7 +7,7 @@ from werkzeug.security import generate_password_hash
 # ----------------------
 DB_USER = "root"
 DB_PASS = ""  # your MySQL root password if any
-DB_HOST = "localhost"
+DB_HOST = "https://cybersecurity-threat-detection-system-fezt.onrender.com"
 DB_NAME = "mini_project_db"
 
 DB_URI = f"mysql+mysqlconnector://{DB_USER}:{DB_PASS}@{DB_HOST}/{DB_NAME}"

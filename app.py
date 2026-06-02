@@ -34,7 +34,7 @@ app.config['MAX_CONTENT_LENGTH'] = 16*1024*1024
 # NOTE: Please ensure your MySQL server is running and database 'mini_project_db' exists.
 DB_USER = os.getenv("DB_USER","root")
 DB_PASSWORD = os.getenv("DB_PASSWORD","")
-DB_HOST = os.getenv("DB_HOST","localhost")
+DB_HOST = os.getenv("DB_HOST","https://cybersecurity-threat-detection-system-fezt.onrender.com")
 DB_NAME = os.getenv("DB_NAME","mini_project_db")
 
 if DB_PASSWORD.strip()=="":
