@@ -1,6 +1,7 @@
 import os
 import re
 import traceback
+from urllib.parse import quote_plus
 from sqlalchemy import text, select
 from datetime import datetime
 from flask import Flask, render_template, request, redirect, url_for, flash, session
@@ -32,7 +33,7 @@ app.config['MAX_CONTENT_LENGTH'] = 16*1024*1024
 # DB
 # -------------------------
 DB_USER = os.getenv("MYSQLUSER", "root")
-DB_PASSWORD = os.getenv("MYSQLPASSWORD", "")
+DB_PASSWORD = quote_plus(os.getenv("MYSQLPASSWORD", ""))
 DB_HOST = os.getenv("MYSQLHOST", "localhost")
 DB_NAME = os.getenv("MYSQLDATABASE", "railway")
 DB_PORT = int(os.getenv("MYSQLPORT", "3306"))
