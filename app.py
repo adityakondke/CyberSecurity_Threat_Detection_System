@@ -36,6 +36,7 @@ DB_USER = os.getenv("DB_USER","root")
 DB_PASSWORD = os.getenv("DB_PASSWORD","")
 DB_HOST = os.getenv("DB_HOST","https://cybersecurity-threat-detection-system-fezt.onrender.com")
 DB_NAME = os.getenv("DB_NAME","mini_project_db")
+DB_PORT = int(os.getenv("MYSQLPORT") or 3306)
 
 if DB_PASSWORD.strip()=="":
     DB_URI = f"mysql+mysqlconnector://{DB_USER}@{DB_HOST}/{DB_NAME}"
