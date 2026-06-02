@@ -499,6 +499,7 @@ def logout():
 print("DB_USER =", repr(DB_USER))
 print("DB_HOST =", repr(DB_HOST))
 print("DB_PORT =", repr(DB_PORT))  
+print(repr(DB_PASSWORD))
 
 
 # -------------------------
